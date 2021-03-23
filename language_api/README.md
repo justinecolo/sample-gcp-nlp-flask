@@ -1,9 +1,5 @@
 # Python Google Natural Language Cloud  sample for Google App Engine Flexible Environment
 
-[![Open in Cloud Shell][shell_img]][shell_link]
-
-[shell_img]: http://gstatic.com/cloudssh/images/open-btn.png
-[shell_link]: https://console.cloud.google.com/cloudshell/open
 
 This sample demonstrates how to use the [Google Cloud Natural Language API](https://cloud.google.com/natural-language) and [Google Cloud Datastore](https://cloud.google.com/datastore/) on [Google App Engine Flexible Environment](https://cloud.google.com/appengine).
 
@@ -15,21 +11,21 @@ Make a note of your project ID, which may be different than your project name.
 Make sure to [Enable Billing](https://pantheon.corp.google.com/billing?debugUI=DEVELOPERS)
 for your project.
 
-Download the [Google Cloud SDK](https://cloud.google.com/sdk/docs/) to your
-local machine. Alternatively, you could use the [Cloud Shell](https://cloud.google.com/shell/docs/quickstart), which comes with the Google Cloud SDK pre-installed.
+Open the Cloud Shell (top right of console, or click the following button)
 
-Initialize the Google Cloud SDK (skip if using Cloud Shell):
+[![Cloud Shell][shell_img]][shell_link]
+         
+[shell_img]: http://gstatic.com/cloudssh/images/open-btn.png
+[shell_link]: https://console.cloud.google.com/home/dashboard?cloudshell=true
 
-    gcloud init
 
 Create your App Engine application:
 
     gcloud app create
 
-Set an environment variable for your project ID, replacing `[YOUR_PROJECT_ID]`
-with your project ID:
+Set an environment variable for your project ID:
 
-    export PROJECT_ID=[YOUR_PROJECT_ID]
+    export PROJECT_ID=$(gcloud config get-value core/project)
 
 ## Getting the sample code
 
@@ -39,7 +35,7 @@ Run the following command to clone the Github repository:
 
 Change directory to the sample code location:
 
-    cd sample-gcp-nlp-flask/language-api
+    cd sample-gcp-nlp-flask/language_api
 
 ## Authentication
 
@@ -50,7 +46,7 @@ Enable the APIs: (You can also do these through Navigation Menu -> APIs & Servic
 
 Create a Service Account to access the Google Cloud APIs when testing locally:
 
-    gcloud iam service-accounts create qwiklab \
+    gcloud iam service-accounts create example \
     --display-name "My Service Account"
 
 Give your newly created Service Account appropriate permissions:
@@ -77,14 +73,13 @@ Create a virtual environment and install dependencies:
     source env/bin/activate
     pip install -r requirements.txt
 
-Keep in mind to do the key creation and virtual environment set up steps above in the same directory (see these files being created with the ls command). This ensures your virtual environment can sue the service account privileges.
-Also, if you have to restart (re-activate) your virtual environment, keep in mind to do it from this directory where you have created the env, or it wont work.
+Note that if you have to restart (re-activate) your virtual environment, keep in mind to do it from this directory where you have created the env, or it wont work.
 
 Start your application locally:
 
     python main.py
 
-Visit `localhost:8080` to view your application running locally. Press `Control-C`
+Visit the link generated ('Running on http://127.0.0.1:8080/') to view your application running locally. Press `Control-C`
 on your command line when you are finished.
 
 When you are ready to leave your virtual environment:
